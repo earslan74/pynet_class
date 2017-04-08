@@ -21,8 +21,9 @@ for c_map in crypto:
         print c_map.text
 
 print "\n***** Non-AES Crypto Maps *****\n"
-for i in ipsec_conf.find_objects_wo_child(parentspec=r"^crypto map", childspec=r"^ set transform-set AES"):
-    print i.text + ": ",
-    print i.find_children(r"^ set transform-set").text.split()[-1]
+crypto_non_aes = ipsec_conf.find_objects_wo_child(parentspec=r"^crypto map", childspec=r"set transform-set AES")
+for i in crypto_non_aes:
+    print i.text.strip() + ": ",
+    print i.re_search_children(r"set transform-set")[0].text.split()[-1]
  
 

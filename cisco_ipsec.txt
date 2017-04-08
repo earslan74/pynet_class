@@ -100,6 +100,11 @@ crypto map CRYPTO 30 ipsec-isakmp
  set transform-set AES-SHA 
  set pfs group2
  match address VPN-TEST3
+crypto map CRYPTO 35 ipsec-isakmp
+ set peer 8.8.8.8.1
+ set transform-set esp-sha-hmac
+ set pfs group2
+ match address VPN-TEST8
 crypto map CRYPTO 40 ipsec-isakmp 
  set peer 4.4.4.1
  set transform-set AES-SHA 
