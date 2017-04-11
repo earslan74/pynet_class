@@ -24,6 +24,10 @@ def send_cmd(remote_conn, cmd):
     return pretty_output
 
 def login(remote_conn, username, password): 
+    '''
+    Provides login through telnet.
+    Input variables: remote_conn, username, and password in order
+    '''
     output = remote_conn.read_until("sername:", TELNET_TIMEOUT)
     output = remote_conn.write(username + "\n")
     output = remote_conn.read_until("assword:", TELNET_TIMEOUT)
