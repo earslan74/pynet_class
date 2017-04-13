@@ -10,7 +10,7 @@ rtr1_ip = "184.105.247.70"
 rtr2_ip = "184.105.247.71"
 
 class CiscoDevice(object):
-  #  COMMUNITY_STRING = "galileo"
+  #  COMMUNITY_STRING = "galileo" # if defined as class attributes, they need to be called from the below methods by self. notation
   #  SNMP_PORT = 161
   #  SYSNAME_OID = "1.3.6.1.2.1.1.5.0"
   #  SYSDESCR_OID = "1.3.6.1.2.1.1.1.0"
