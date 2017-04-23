@@ -76,14 +76,15 @@ def email_change(dev_change):
         device_time += i + " on " + dev_change[i] + " GMT" + "\n"
     message = '''
 
-    Config changes took place on the device(s) listed below.
+Config changes took place on the device(s) listed below.
 
-    {0} 
+{0} 
 
-    Regards,
 
-    Erdem
-    '''.format(device_time)
+Regards,
+
+Erdem
+'''.format(device_time)
 
     email_helper.send_mail(recipient, subject, message, sender)
     print message 
