@@ -1,4 +1,4 @@
-#!/u sr/bin/env python
+#!/usr/bin/env python
 
 import pexpect
 from getpass import getpass
