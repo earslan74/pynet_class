@@ -1,5 +1,5 @@
 ---
 - name: Generate access switch configuration file   
-  template: src=access_switch2.j2 dest=/home/earslan/pynet_class/class5/configs/{{item.hostname}}.txt	
+  template: src=access_switch3.j2 dest=/home/earslan/pynet_class/class5/configs/{{item.hostname}}.txt	
   with_items: "{{ test_switches2 }}"
 
