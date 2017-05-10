@@ -1,0 +1,38 @@
+---
+
+- name: Cleanup Arista Ethernet7 Config
+  hosts: arista
+
+  tasks:
+    - name: Set Eth7description to None
+      eos_interface: name={{ item }} description=""
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items: 
+          - Ethernet7
+
+    - name: Set Eth7 to default access mode
+      eos_switchport: name={{ item }} mode=access access_vlan=1 trunk_allowed_vlans=1-4094 trunk_native_vlan=1
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items:
+          - Ethernet7
+
+    - name: Remove VLANs
+      eos_vlan: name={{ item.name }} vlanid={{ item.vlanid }} state=absent
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items:
+          - {name: WEB, vlanid: 101}
+          - {name: APP, vlanid: 201}
+          - {name: DB, vlanid: 301}
+

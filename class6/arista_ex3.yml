@@ -1,0 +1,15 @@
+---
+
+- name: Configure Trunk on Arista Ethernet7
+  hosts: arista
+
+  tasks:
+    - name: Set Eth7 Trunk
+      eos_switchport: name={{ item }} mode=trunk trunk_native_vlan=1 trunk_allowed_vlans=101,201,301 access_vlan=1
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items: 
+          - Ethernet7
