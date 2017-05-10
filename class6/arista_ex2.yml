@@ -1,0 +1,25 @@
+---
+
+- name: Configure Arista Ethernet7
+  hosts: arista
+
+  tasks:
+    - name: Modify Eth7 Description
+      eos_interface: name={{ item }} description="*** IN USE ***"
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items: 
+          - Ethernet7
+
+    - name: Set Eth7 access VLAN 201
+      eos_switchport: name={{ item }} mode=access access_vlan=201
+                username={{ eapi_username }}
+                password={{ eapi_password }}
+                host={{ eapi_hostname }}
+                port={{ eapi_port }}
+                transport=https
+      with_items:
+          - Ethernet7
