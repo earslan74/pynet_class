@@ -4,7 +4,7 @@
   hosts: arista
 
   tasks:
-    - name: Set Eth7description to None
+    - name: Set Eth7 description to None
       eos_interface: name={{ item }} description=""
                 username={{ eapi_username }}
                 password={{ eapi_password }}
